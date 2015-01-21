@@ -2,6 +2,7 @@
     "name": "grimthorr/laravel-user-settings",
     "description": "Simple user settings facade for Laravel 4.",
     "homepage": "https://github.com/Grimthorr/laravel-user-settings",
+    "license": "MIT",
     "authors": [
         {
             "name": "Grimthorr",
@@ -11,7 +12,9 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
+        "illuminate/support": "4.*",
+        "illuminate/config": "4.*",
+		"illuminate/database": "4.*"
     },
     "autoload": {
         "classmap": [
