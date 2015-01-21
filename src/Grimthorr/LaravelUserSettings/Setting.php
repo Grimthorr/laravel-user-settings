@@ -111,6 +111,8 @@ class Setting
 
         if (array_key_exists($key, $this->settings)) {
             unset($this->settings[$key]);
+
+            $this->dirty = true;
         }
     }
 
