@@ -1,0 +1,25 @@
+{
+    "name": "grimthorr/laravel-user-settings",
+    "description": "Simple user settings facade for Laravel 4.",
+    "homepage": "https://github.com/Grimthorr/laravel-user-settings",
+    "authors": [
+        {
+            "name": "Grimthorr",
+            "email": "phil@hughesbox.co.uk",
+            "homepage": "http://hughesbox.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Grimthorr\\LaravelUserSettings\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
