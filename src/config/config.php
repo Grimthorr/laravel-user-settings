@@ -14,5 +14,5 @@ return array(
     /**
      * Constrait to add to all clauses.
      */
-    'constraint' => 'id = ' . Auth::user()->id,
+    'constraint' => 'id = ' . (Auth::check() ? Auth::id() : null),
 );
