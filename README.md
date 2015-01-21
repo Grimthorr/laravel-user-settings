@@ -3,7 +3,7 @@ Simple user settings facade for Laravel 4. Settings are stored as JSON in a sing
 
 
 ## Installation
-1. Run `composer require Grimthorr/laravel-user-settings` to include this in your project.
+1. Run `composer require grimthorr/laravel-user-settings` to include this in your project.
 2. Add `'Grimthorr\LaravelUserSettings\ServiceProvider'` to `providers` in `app/config/app.php`.
 
   ```php
