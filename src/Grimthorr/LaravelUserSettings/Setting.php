@@ -3,8 +3,8 @@
 namespace Grimthorr\LaravelUserSettings;
 
 
-class Setting
-{
+class Setting {
+    
     /**
      * The table name.
      * Configured by the developer (see config/config.php for default).
