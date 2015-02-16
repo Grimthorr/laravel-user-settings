@@ -160,7 +160,7 @@ class Setting {
 	 * @param mixed $custom_constraint_value
      * @return array
      */
-    public function all($custom_constraint_value)
+    public function all($custom_constraint_value = false)
     {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
         $this->check($constraint_value);
@@ -174,7 +174,7 @@ class Setting {
 	 * @param mixed $custom_constraint_value
      * @return void
      */
-    public function save($custom_constraint_value)
+    public function save($custom_constraint_value = false)
     {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
 
