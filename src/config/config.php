@@ -12,7 +12,18 @@ return array(
     'column' => 'settings',
 
     /**
-     * Constrait to add to all clauses.
+     * Custom constrait to add to all clauses.
      */
-    'constraint' => 'id = ' . (Auth::check() ? Auth::id() : null),
+    'custom_constraint' => 'id = ' . (Auth::check() ? Auth::id() : null),
+
+    /**
+     * Constrait key
+     */
+    'constraint_key' => 'id',
+
+    /**
+     * Default constraint value
+     */
+    'default_constraint_value' => (Auth::check() ? Auth::id() : null)
+
 );
