@@ -12,9 +12,9 @@ return array(
     'column' => 'settings',
 
     /**
-     * Custom constrait to add to all clauses.
+     * Custom constrait query to add to all clauses, set to false for use constraint_key and constraint_value
      */
-    'custom_constraint' => 'id = ' . (Auth::check() ? Auth::id() : null),
+    'custom_constraint' => false, //'id = ' . (Auth::check() ? Auth::id() : null),
 
     /**
      * Constrait key
