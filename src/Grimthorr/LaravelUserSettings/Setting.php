@@ -225,7 +225,7 @@ class Setting {
      */
     protected function check($constraint_value)
     {
-        if (!$this->loaded[$constraint_value]) {
+        if (empty($this->loaded[$constraint_value])) {
             $this->load($constraint_value);
             $this->loaded[$constraint_value] = true;
         }
