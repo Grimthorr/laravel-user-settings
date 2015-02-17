@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2015-02-17 12:30 GMT
+##### Fixed
+- Fix key $constraint_value on check method
+
 ## [1.1.1] - 2015-02-17 12:30 GMT
 ##### Fixed
 - Folder renamed for src provider.
