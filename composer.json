@@ -1,7 +1,7 @@
 {
     "name": "cmarfil/laravel-multiuser-json-settings",
     "description": "Simple user settings facade for Laravel 4.",
-    "homepage": "https://github.com/cmarfil/laravel-user-settings",
+    "homepage": "https://github.com/cmarfil/laravel-multiuser-json-settings",
     "license": "MIT",
     "authors": [
         {
