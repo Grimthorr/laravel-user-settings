@@ -104,6 +104,7 @@ If you do not pass constraint_value the value used by default is default_constra
 Setting::load($constraint_value);
 ```
 Reload settings from the database. This is called automatically if settings have not been loaded before being accessed or mutated.
+If you do not pass constraint_value the value used by default is default_constraint_value
 
 ##Example
 With default configuration:

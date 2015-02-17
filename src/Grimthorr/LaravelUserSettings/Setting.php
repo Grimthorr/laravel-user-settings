@@ -202,8 +202,9 @@ class Setting {
      * @param mix $constraint_value
      * @return void
      */
-    public function load($constraint_value)
+    public function load($custom_constraint_value = false)
     {
+		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
 		$constraint_query = $this->negotiate_constraint_query($constraint_value);
         $json = \DB::table($this->table)
                 ->whereRaw($constraint_query)
