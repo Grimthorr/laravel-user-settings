@@ -123,7 +123,7 @@ The following set and returns the **user logged** setting "email_notification"
 //Set email_notifications setting to false
 Setting::set('email_notifications', false);
 
-//Set email_notifications setting to false
+//Save config
 Setting::save();
 
 //Save email_notifications
@@ -135,7 +135,7 @@ The following set and returns the setting "email_notification" for **user with i
 //Set email_notifications setting to false
 Setting::set('email_notifications', false, 23);
 
-//Set email_notifications setting to false
+//Save config
 Setting::save(23);
 
 //Save email_notifications
