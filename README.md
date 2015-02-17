@@ -1,4 +1,4 @@
-# laravel-user-settings
+# laravel-multiuser-json-settings
 Simple user settings facade for Laravel 4. Settings are stored as JSON in a single database column, so you can easily add it to an existing table (`users` for example).
 
 
