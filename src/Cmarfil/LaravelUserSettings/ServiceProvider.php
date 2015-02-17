@@ -1,6 +1,6 @@
 <?php
 
-namespace Grimthorr\LaravelUserSettings;
+namespace Cmarfil\LaravelMultiUserJsonSettings;
 
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider {
@@ -19,7 +19,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('grimthorr/laravel-user-settings');
+		$this->package('cmarfil/laravel-multiuser-json-settings');
 	}
 
 	/**
@@ -29,7 +29,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app['config']->package('grimthorr/laravel-user-settings', __DIR__.'/../../config', 'grimthorr/laravel-user-settings');
+		$this->app['config']->package('cmarfil/laravel-multiuser-json-settings', __DIR__.'/../../config', 'cmarfil/laravel-multiuser-json-settings');
 	}
 
 	/**

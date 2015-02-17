@@ -1,13 +1,13 @@
 {
-    "name": "grimthorr/laravel-user-settings",
+    "name": "cmarfil/laravel-multiuser-json-settings",
     "description": "Simple user settings facade for Laravel 4.",
-    "homepage": "https://github.com/Grimthorr/laravel-user-settings",
+    "homepage": "https://github.com/cmarfil/laravel-user-settings",
     "license": "MIT",
     "authors": [
         {
-            "name": "Grimthorr",
-            "email": "phil@hughesbox.co.uk",
-            "homepage": "http://hughesbox.co.uk"
+            "name": "Cmarfil",
+            "email": "cristian.marfil@gmail.com",
+            "homepage": "https://es.linkedin.com/pub/cristian-marfil-reinoso/25/92a/521"
         }
     ],
     "require": {
@@ -21,7 +21,7 @@
             "src/migrations"
         ],
         "psr-0": {
-            "Grimthorr\\LaravelUserSettings\\": "src/"
+            "Cmarfil\\LaravelMultiUserJsonSettings\\": "src/"
         }
     },
     "minimum-stability": "stable"

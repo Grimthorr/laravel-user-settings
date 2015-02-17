@@ -1,6 +1,6 @@
 <?php
 
-namespace Grimthorr\LaravelUserSettings;
+namespace Cmarfil\LaravelMultiUserJsonSettings;
 
 
 class Setting {
@@ -74,11 +74,11 @@ class Setting {
      */
     public function __construct()
     {
-        $this->table = \Config::get('grimthorr/laravel-user-settings::table');
-        $this->column = \Config::get('grimthorr/laravel-user-settings::column');
-        $this->custom_constraint = \Config::get('grimthorr/laravel-user-settings::custom_constraint');
-		$this->constraint_key = \Config::get('grimthorr/laravel-user-settings::constraint_key');
-		$this->default_constraint_value = \Config::get('grimthorr/laravel-user-settings::constraint_key');
+        $this->table = \Config::get('cmarfil/laravel-multiuser-json-settings::table');
+        $this->column = \Config::get('cmarfil/laravel-multiuser-json-settings::column');
+        $this->custom_constraint = \Config::get('cmarfil/laravel-multiuser-json-settings::custom_constraint');
+		$this->constraint_key = \Config::get('cmarfil/laravel-multiuser-json-settings::constraint_key');
+		$this->default_constraint_value = \Config::get('cmarfil/laravel-multiuser-json-settings::constraint_key');
     }
 
 

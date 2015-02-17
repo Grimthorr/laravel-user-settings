@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.1] - 2015-02-17 12:30 GMT
+##### Changed
+- Support for get, set and save different rows of configuration with extra param constraint_value. - Cmarfil
 
 ## [1.0.2] - 2015-01-21 16:34 GMT
 ##### Changed

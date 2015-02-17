@@ -1,13 +1,13 @@
 <?php
 
-namespace Grimthorr\LaravelUserSettings;
+namespace Cmarfil\LaravelMultiUserJsonSettings;
 
 
 class Facade extends \Illuminate\Support\Facades\Facade {
 
     protected static function getFacadeAccessor()
     {
-        return 'Grimthorr\LaravelUserSettings\Setting';
+        return 'Cmarfil\LaravelMultiUserJsonSettings\Setting';
     }
-    
+
 }

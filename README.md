@@ -3,31 +3,31 @@ Simple user settings facade for Laravel 4. Settings are stored as JSON in a sing
 
 
 ## Installation
-1. Run `composer require grimthorr/laravel-user-settings` to include this in your project.
-2. Add `'Grimthorr\LaravelUserSettings\ServiceProvider'` to `providers` in `app/config/app.php`.
+1. Run `composer require cmarfil/laravel-multiuser-json-settings` to include this in your project.
+2. Add `'Cmarfil\LaravelMultiUserJsonSettings\ServiceProvider'` to `providers` in `app/config/app.php`.
 
   ```php
   'providers' => array(
     // ...
-    'Grimthorr\LaravelUserSettings\ServiceProvider',
+    'Cmarfil\LaravelMultiUserJsonSettings\ServiceProvider',
   ),
   ```
-3. Add `'Setting' => 'Grimthorr\LaravelUserSettings\Facade'` to `aliases` in `app/config/app.php`.
+3. Add `'Setting' => 'Cmarfil\LaravelMultiUserJsonSettings\Facade'` to `aliases` in `app/config/app.php`.
 
   ```php
   'aliases' => array(
     // ...
-    'Setting' => 'Grimthorr\LaravelUserSettings\Facade',
+    'Setting' => 'Cmarfil\LaravelMultiUserJsonSettings\Facade',
   ),
   ```
 
-4. Run `php artisan config:publish grimthorr/laravel-user-settings` to publish the config file.
-5. Modify the published configuration file located at `app/config/packages/grimthorr/laravel-user-settings/config.php` to your liking.
-6. Create a varchar (string) column in a table on your database to match the config file in step 5. Alternatively, use the Laravel migration included in this package to automatically create a `settings` column in the `users` table: `php artisan migrate --package=grimthorr/laravel-user-settings`.
+4. Run `php artisan config:publish cmarfil/laravel-multiuser-json-settings` to publish the config file.
+5. Modify the published configuration file located at `app/config/packages/cmarfil/laravel-multiuser-json-settings/config.php` to your liking.
+6. Create a varchar (string) column in a table on your database to match the config file in step 5. Alternatively, use the Laravel migration included in this package to automatically create a `settings` column in the `users` table: `php artisan migrate --package=cmarfil/laravel-multiuser-json-settings`.
 
 
 ## Configuration
-Pop open `app/config/packages/grimthorr/laravel-user-settings/config.php` to adjust package configuration. If this file doesn't exist, run `php artisan config:publish grimthorr/laravel-user-settings` to create the default configuration file.
+Pop open `app/config/packages/cmarfil/laravel-multiuser-json-settings/config.php` to adjust package configuration. If this file doesn't exist, run `php artisan config:publish cmarfil/laravel-multiuser-json-settings` to create the default configuration file.
 
 ```php
 return array(
@@ -152,4 +152,5 @@ Feel free to create a fork and submit a pull request if you would like to contri
 Raise an issue on GitHub if you notice something broken.
 
 #### Credits
+Fork of https://github.com/Grimthorr/laravel-user-settings.
 Based loosely on https://github.com/anlutro/laravel-settings.
