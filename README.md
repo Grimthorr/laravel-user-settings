@@ -6,7 +6,7 @@ Simple user settings facade for Laravel 4. Settings are stored as JSON in a sing
 1. Begin by installing this package through Composer. Edit your project's composer.json file to require cmarfil/laravel-multiuser-json-settings.
 ```
 "require": {
-    "cmarfil/laravel-multiuser-json-settings": "1.1.*"
+    "cmarfil/laravel-multiuser-json-settings": "~1.1"
 }
 ```
 2. Add `'Cmarfil\LaravelMultiUserJsonSettings\ServiceProvider'` to `providers` in `app/config/app.php`.
