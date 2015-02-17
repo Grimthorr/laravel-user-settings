@@ -12,11 +12,6 @@ return array(
     'column' => 'settings',
 
     /**
-     * Custom constrait query to add to all clauses, set to false for use constraint_key and constraint_value
-     */
-    'custom_constraint' => false, //'id = ' . (Auth::check() ? Auth::id() : null),
-
-    /**
      * Constrait key
      */
     'constraint_key' => 'id',
@@ -24,6 +19,11 @@ return array(
     /**
      * Default constraint value
      */
-    'default_constraint_value' => (Auth::check() ? Auth::id() : null)
+    'default_constraint_value' => (Auth::check() ? Auth::id() : null),
+
+    /**
+     * Custom constrait query to add to all clauses, set to false for use constraint_key and constraint_value
+     */
+    'custom_constraint' => false, //'id = ' . (Auth::check() ? Auth::id() : null),
 
 );
