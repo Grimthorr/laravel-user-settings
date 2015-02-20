@@ -193,7 +193,7 @@ class Setting {
             $this->dirty = false;
         }
 
-        $this->loaded = true;
+        $this->loaded[$constraint_value] = true;
     }
 
     /**
