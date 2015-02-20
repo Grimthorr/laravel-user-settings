@@ -39,7 +39,7 @@ class Setting {
 
     /**
      * The default constraint value (used with the $constraint_key to generate a where clause).
-     * This will only be used if $custom_constraint_value is not specified.
+     * This will only be used if $constraint_value is not specified.
      * Configured by the developer (see config/config.php for default).
      *
      * @var string
@@ -90,12 +90,12 @@ class Setting {
      *
      * @param string $key
      * @param mixed $default
-     * @param string $custom_constraint_value
+     * @param string $constraint_value
      * @return mixed
      */
-    public function get($key, $default = null, $custom_constraint_value = null)
+    public function get($key, $default = null, $constraint_value = null)
     {
-		$constraint_value = $this->getConstraintValue($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
         return array_get($this->settings[$constraint_value], $key, $default);
@@ -106,12 +106,12 @@ class Setting {
      *
      * @param string $key
      * @param mixed $value
-	 * @param string $custom_constraint_value
+	 * @param string $constraint_value
      * @return void
      */
-    public function set($key, $value = null, $custom_constraint_value = null)
+    public function set($key, $value = null, $constraint_value = null)
     {
-		$constraint_value = $this->getConstraintValue($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
         $this->dirty[$constraint_value] = true;
@@ -129,12 +129,12 @@ class Setting {
      * Unset a specific setting.
      *
      * @param string $key
-	 * @param string $custom_constraint_value
+	 * @param string $constraint_value
      * @return void
      */
-    public function forget($key, $custom_constraint_value = null)
+    public function forget($key, $constraint_value = null)
     {
-		$constraint_value = $this->getConstraintValue($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
         if (array_key_exists($key, $this->settings[$constraint_value])) {
@@ -148,12 +148,12 @@ class Setting {
      * Check for the existence of a specific setting.
      *
      * @param string $key
-     * @param string $custom_constraint_value
+     * @param string $constraint_value
      * @return bool
      */
-    public function has($key, $custom_constraint_value = null)
+    public function has($key, $constraint_value = null)
     {
-		$constraint_value = $this->getConstraintValue($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
         return array_key_exists($constraint_value, $this->settings) ?: array_key_exists($key, $this->settings[$constraint_value]);
@@ -162,12 +162,12 @@ class Setting {
     /**
      * Return the entire settings array.
      *
-	 * @param string $custom_constraint_value
+	 * @param string $constraint_value
      * @return array
      */
-    public function all($custom_constraint_value = null)
+    public function all($constraint_value = null)
     {
-		$constraint_value = $this->getConstraintValue($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
         return $this->settings[$constraint_value];
@@ -176,12 +176,12 @@ class Setting {
     /**
      * Save all changes back to the database.
      *
-	 * @param string $custom_constraint_value
+	 * @param string $constraint_value
      * @return void
      */
-    public function save($custom_constraint_value = null)
+    public function save($constraint_value = null)
     {
-		$constraint_value = $this->getConstraintValue($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
         if ($this->dirty[$constraint_value]) {
@@ -205,12 +205,12 @@ class Setting {
     /**
      * Load settings from the database.
 	 *
-     * @param string $custom_constraint_value
+     * @param string $constraint_value
      * @return void
      */
-    public function load($custom_constraint_value = null)
+    public function load($constraint_value = null)
     {
-		$constraint_value = $this->getConstraintValue($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($constraint_value);
 		$constraint_query = $this->getConstraintQuery($constraint_value);
         $json = \DB::table($this->table)
                 ->whereRaw($constraint_query)
