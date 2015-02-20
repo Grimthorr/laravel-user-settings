@@ -151,7 +151,7 @@ class Setting {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
         $this->check($constraint_value);
 
-        return array_key_exists($key, $this->settings[$constraint_value]);
+        return array_key_exists($constraint_value, $this->settings) ?: array_key_exists($key, $this->settings[$constraint_value]);
     }
 
     /**
