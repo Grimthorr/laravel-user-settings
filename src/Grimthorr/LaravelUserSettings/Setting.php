@@ -78,7 +78,7 @@ class Setting {
         $this->column = \Config::get('grimthorr/laravel-user-settings::column');
         $this->custom_constraint = \Config::get('grimthorr/laravel-user-settings::custom_constraint');
 		$this->constraint_key = \Config::get('grimthorr/laravel-user-settings::constraint_key');
-		$this->default_constraint_value = \Config::get('grimthorr/laravel-user-settings::constraint_key');
+		$this->default_constraint_value = \Config::get('grimthorr/laravel-user-settings::default_constraint_value');
     }
 
 
