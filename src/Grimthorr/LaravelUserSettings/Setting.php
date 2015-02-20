@@ -38,12 +38,13 @@ class Setting {
     protected $constraint_key = '';
 
     /**
-     * The constraint value (the value to use with the above key).
+     * The default constraint value (used with the $constraint_key to generate a where clause).
+     * This will only be used if $custom_constraint_value is not specified.
      * Configured by the developer (see config/config.php for default).
      *
      * @var string
      */
-    protected $constraint_value = '';
+    protected $default_constraint_value = '';
 
     /**
      * The settings cache.
