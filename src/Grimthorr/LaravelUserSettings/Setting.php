@@ -55,10 +55,11 @@ class Setting {
 
     /**
      * Whether any settings have been modified since being loaded.
+     * We use an array so different constraints can be flagged as dirty separately.
      *
      * @var bool
      */
-    protected $dirty = false;
+    protected $dirty = array();
 
     /**
      * Whether settings have been loaded from the database (this session).
@@ -113,7 +114,7 @@ class Setting {
 		$constraint_value = $this->getConstraintValue($custom_constraint_value);
         $this->check($constraint_value);
 
-        $this->dirty = true;
+        $this->dirty[$constraint_value] = true;
 
         if (is_array($key)) {
             foreach ($key as $k => $v) {
@@ -139,7 +140,7 @@ class Setting {
         if (array_key_exists($key, $this->settings[$constraint_value])) {
             unset($this->settings[$constraint_value]);
 
-            $this->dirty = true;
+            $this->dirty[$constraint_value] = true;
         }
     }
 
@@ -181,8 +182,9 @@ class Setting {
     public function save($custom_constraint_value = null)
     {
 		$constraint_value = $this->getConstraintValue($custom_constraint_value);
+        $this->check($constraint_value);
 
-        if ($this->dirty) {
+        if ($this->dirty[$constraint_value]) {
             $json = json_encode($this->settings[$constraint_value]);
 
             $update = array();
@@ -194,7 +196,7 @@ class Setting {
                 ->whereRaw($constraint_query)
                 ->update($update);
 
-            $this->dirty = false;
+            $this->dirty[$constraint_value] = false;
         }
 
         $this->loaded[$constraint_value] = true;
@@ -217,7 +219,7 @@ class Setting {
 
         $this->settings[$constraint_value] = json_decode($json, true);
 
-        $this->dirty = false;
+        $this->dirty[$constraint_value] = false;
         $this->loaded[$constraint_value] = true;
     }
 
