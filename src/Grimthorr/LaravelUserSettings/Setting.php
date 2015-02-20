@@ -30,7 +30,7 @@ class Setting {
     protected $custom_constraint = '';
 
     /**
-     * The constraint key ( index for different row settings )
+     * The constraint key (table index used to specify the constraint).
      * Configured by the developer (see config/config.php for default).
      *
      * @var string
@@ -38,8 +38,8 @@ class Setting {
     protected $constraint_key = '';
 
     /**
-     * The constraint value
-     * Default configured by the developer (see config/config.php for default).
+     * The constraint value (the value to use with the above key).
+     * Configured by the developer (see config/config.php for default).
      *
      * @var string
      */
@@ -61,6 +61,7 @@ class Setting {
 
     /**
      * Whether settings have been loaded from the database (this session).
+     * We use an array so different constraints can be loaded separately.
      *
      * @var array
      */
@@ -87,10 +88,10 @@ class Setting {
      *
      * @param string $key
      * @param mixed $default
-     * @param mixed $custom_constraint_value
+     * @param string $custom_constraint_value
      * @return mixed
      */
-    public function get($key, $default = null, $custom_constraint_value = false)
+    public function get($key, $default = null, $custom_constraint_value = null)
     {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
         $this->check($constraint_value);
@@ -103,9 +104,10 @@ class Setting {
      *
      * @param string $key
      * @param mixed $value
-	 * @param mixed $custom_constraint_value
+	 * @param string $custom_constraint_value
+     * @return void
      */
-    public function set($key, $value = null, $custom_constraint_value = false)
+    public function set($key, $value = null, $custom_constraint_value = null)
     {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
         $this->check($constraint_value);
@@ -125,10 +127,10 @@ class Setting {
      * Unset a specific setting.
      *
      * @param string $key
-	 * @param mixed $custom_constraint_value
+	 * @param string $custom_constraint_value
      * @return void
      */
-    public function forget($key, $custom_constraint_value = false)
+    public function forget($key, $custom_constraint_value = null)
     {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
         $this->check($constraint_value);
@@ -141,12 +143,13 @@ class Setting {
     }
 
     /**
-     * Check for the existance of a specific setting.
+     * Check for the existence of a specific setting.
      *
      * @param string $key
+     * @param string $custom_constraint_value
      * @return bool
      */
-    public function has($key, $custom_constraint_value = false)
+    public function has($key, $custom_constraint_value = null)
     {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
         $this->check($constraint_value);
@@ -157,10 +160,10 @@ class Setting {
     /**
      * Return the entire settings array.
      *
-	 * @param mixed $custom_constraint_value
+	 * @param string $custom_constraint_value
      * @return array
      */
-    public function all($custom_constraint_value = false)
+    public function all($custom_constraint_value = null)
     {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
         $this->check($constraint_value);
@@ -171,10 +174,10 @@ class Setting {
     /**
      * Save all changes back to the database.
      *
-	 * @param mixed $custom_constraint_value
+	 * @param string $custom_constraint_value
      * @return void
      */
-    public function save($custom_constraint_value = false)
+    public function save($custom_constraint_value = null)
     {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
 
@@ -197,12 +200,12 @@ class Setting {
     }
 
     /**
-     * Load settings from the database
+     * Load settings from the database.
 	 *
-     * @param mix $constraint_value
+     * @param string $custom_constraint_value
      * @return void
      */
-    public function load($custom_constraint_value = false)
+    public function load($custom_constraint_value = null)
     {
 		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
 		$constraint_query = $this->negotiate_constraint_query($constraint_value);
@@ -220,7 +223,7 @@ class Setting {
     /**
      * Check if settings have been loaded, load if not.
 	 *
-     * @param mix $constraint_value
+     * @param string $constraint_value
      * @return void
      */
     protected function check($constraint_value)
@@ -232,24 +235,25 @@ class Setting {
     }
 
     /**
-     * Negotiate constraint value, default or custom
+     * Negotiate constraint value; use custom if specified or default.
 	 *
-     * @param mix $constraint_value
-     * @return mix
+     * @param string $constraint_value
+     * @return mixed
      */
-	public function negotiate_constraint_value($constraint_value){
-		return ($constraint_value) ? $constraint_value : $this->default_constraint_value;
+	public function negotiate_constraint_value($constraint_value)
+    {
+		return $constraint_value ?: $this->default_constraint_value;
 	}
 
     /**
-     * Negotiate constraint query
+     * Negotiate constraint query.
 	 *
-     * @param mix $constraint_value
-     * @return mix
+     * @param string $constraint_value
+     * @return mixed
      */
-	public function negotiate_constraint_query($constraint_value){
-		return ($this->custom_constraint) ? $this->custom_constraint : $this->constraint_key . ' = ' . $constraint_value;
+	public function negotiate_constraint_query($constraint_value)
+    {
+		return $this->custom_constraint ?: $this->constraint_key . ' = ' . $constraint_value;
 	}
-
 
 }
