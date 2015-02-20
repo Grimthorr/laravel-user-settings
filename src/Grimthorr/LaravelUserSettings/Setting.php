@@ -93,7 +93,7 @@ class Setting {
      */
     public function get($key, $default = null, $custom_constraint_value = null)
     {
-		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($custom_constraint_value);
         $this->check($constraint_value);
 
         return array_get($this->settings[$constraint_value], $key, $default);
@@ -109,7 +109,7 @@ class Setting {
      */
     public function set($key, $value = null, $custom_constraint_value = null)
     {
-		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($custom_constraint_value);
         $this->check($constraint_value);
 
         $this->dirty = true;
@@ -132,7 +132,7 @@ class Setting {
      */
     public function forget($key, $custom_constraint_value = null)
     {
-		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($custom_constraint_value);
         $this->check($constraint_value);
 
         if (array_key_exists($key, $this->settings[$constraint_value])) {
@@ -151,7 +151,7 @@ class Setting {
      */
     public function has($key, $custom_constraint_value = null)
     {
-		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($custom_constraint_value);
         $this->check($constraint_value);
 
         return array_key_exists($constraint_value, $this->settings) ?: array_key_exists($key, $this->settings[$constraint_value]);
@@ -165,7 +165,7 @@ class Setting {
      */
     public function all($custom_constraint_value = null)
     {
-		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($custom_constraint_value);
         $this->check($constraint_value);
 
         return $this->settings[$constraint_value];
@@ -179,7 +179,7 @@ class Setting {
      */
     public function save($custom_constraint_value = null)
     {
-		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
+		$constraint_value = $this->getConstraintValue($custom_constraint_value);
 
         if ($this->dirty) {
             $json = json_encode($this->settings[$constraint_value]);
@@ -187,7 +187,7 @@ class Setting {
             $update = array();
             $update[$this->column] = $json;
 
-			$constraint_query = $this->negotiate_constraint_query($constraint_value);
+			$constraint_query = $this->getConstraintQuery($constraint_value);
 
             $res = \DB::table($this->table)
                 ->whereRaw($constraint_query)
@@ -207,8 +207,8 @@ class Setting {
      */
     public function load($custom_constraint_value = null)
     {
-		$constraint_value = $this->negotiate_constraint_value($custom_constraint_value);
-		$constraint_query = $this->negotiate_constraint_query($constraint_value);
+		$constraint_value = $this->getConstraintValue($custom_constraint_value);
+		$constraint_query = $this->getConstraintQuery($constraint_value);
         $json = \DB::table($this->table)
                 ->whereRaw($constraint_query)
                 ->pluck($this->column);
@@ -235,23 +235,23 @@ class Setting {
     }
 
     /**
-     * Negotiate constraint value; use custom if specified or default.
+     * Get constraint value; use custom if specified or default.
 	 *
      * @param string $constraint_value
      * @return mixed
      */
-	public function negotiate_constraint_value($constraint_value)
+	protected function getConstraintValue($constraint_value)
     {
 		return $constraint_value ?: $this->default_constraint_value;
 	}
 
     /**
-     * Negotiate constraint query.
+     * Get constraint query.
 	 *
      * @param string $constraint_value
      * @return mixed
      */
-	public function negotiate_constraint_query($constraint_value)
+	protected function getConstraintQuery($constraint_value)
     {
 		return $this->custom_constraint ?: $this->constraint_key . ' = ' . $constraint_value;
 	}
