@@ -31,11 +31,11 @@ Pop open `app/config/packages/grimthorr/laravel-user-settings/config.php` to adj
 
 ```php
 return array(
-    'table' => 'users',
-    'column' => 'settings',
-	'constraint_key' => 'id',
-	'default_constraint_value' => (Auth::check() ? Auth::id() : null)
-	'custom_constraint' => false, //'id = ' . (Auth::check() ? Auth::id() : null),
+  'table' => 'users',
+  'column' => 'settings',
+  'constraint_key' => 'id',
+  'default_constraint_value' => (Auth::check() ? Auth::id() : null)
+  'custom_constraint' => false,
 );
 ```
 
@@ -46,100 +46,88 @@ Specify the table on your database that you want to use.
 Specify the column in the above table that you want to store the settings JSON data in.
 
 #### Constraint key
-Specify the column constraint - this is used to differentiate between different users, objects or models ( normally id ).
+Specify the index column used for the constraint - this is used to differentiate between different users, objects or models (normally id).
 
 #### Default constraint value
-Specify the default constraint value - If you do not specify one, default configuration is obtained, in this case the user logged.
+Specify the default constraint value - by default this will be the current user's ID, and will be superseded by specifying a `$constraint_value` on any function call.
 
 #### Custom constraint
-Specify a where clause for each query - Caution: Leave blank if your want to set or get different rows on same runtime, use constraint_key and default_constraint_value
+Specify a where clause for each query - set this if you **do not** want to access different rows (for example if your app is single-user only).
+
 
 ## Usage
-Use the Setting facade (`Setting::`) to access the functions in this package.
+Use the Setting facade (`Setting::`) to access the functions in this package. The `$constraint_value `parameter is optional on all functions; if this is not passed, the `default_constraint_value` from the config file will be used.
 
 #### Set
 ```php
 Setting::set('key', 'value', $constraint_value);
 ```
 Use `set` to change the value of a setting. If the setting does not exist, it will be created automatically. You can set multiple keys at once by passing an associative (key=>value) array to the first parameter.
-If you do not pass constraint_value the value used by default is default_constraint_value
 
 #### Get
 ```php
 Setting::get('key', 'default', $constraint_value);
 ```
 Use `get` to retrieve the value of a setting. The second parameter is optional and can be used to specify a default value if the setting does not exist (the default default value is `null`).
-If you do not pass constraint_value the value used by default is default_constraint_value
 
 #### Forget
 ```php
 Setting::forget('key', $constraint_value);
 ```
 Unset or delete a setting by calling `forget`.
-If you do not pass constraint_value the value used by default is default_constraint_value
 
 #### Has
 ```php
 Setting::has('key', $constraint_value);
 ```
 Check for the existence of a setting, returned as a boolean.
-If you do not pass constraint_value the value used by default is default_constraint_value
 
 #### All
 ```php
 Setting::all($constraint_value);
 ```
 Retrieve all settings as an associative array (key=>value).
-If you do not pass constraint_value the value used by default is default_constraint_value
 
 #### Save
 ```php
 Setting::save($constraint_value);
 ```
 Save all changes back to the database. This will need to be called after making changes; it is not automatic.
-If you do not pass constraint_value the value used by default is default_constraint_value
 
 #### Load
 ```php
 Setting::load($constraint_value);
 ```
 Reload settings from the database. This is called automatically if settings have not been loaded before being accessed or mutated.
-If you do not pass constraint_value the value used by default is default_constraint_value
 
-##Example
-With default configuration:
+
+## Example
+These examples are using the default configuration.
+
+#### Using the default constraint value
+The following sets and returns the currently logged in user's setting "example".
 ```php
-return array(
-    'table' => 'users',
-    'column' => 'settings',
-	'constraint_key' => 'id',
-	'default_constraint_value' => (Auth::check() ? Auth::id() : null)
-	'custom_constraint' => false, //'id = ' . (Auth::check() ? Auth::id() : null),
-);
-```
+// Set 'example' setting to 'hello world'
+Setting::set('example', 'hello world');
 
-The following set and returns the **user logged** setting "email_notification"
-```php
-//Set email_notifications setting to false
-Setting::set('email_notifications', false);
-
-//Save config
+// Save to database
 Setting::save();
 
-//Save email_notifications
-return Setting::get('email_notifications');
+// Get the same setting
+return Setting::get('example');
 ```
 
-The following set and returns the setting "email_notification" for **user with id 23**
+#### Specify a constraint value
+The following sets and returns the setting "example" for the user with id of 23.
 ```php
-//Set email_notifications setting to false
-Setting::set('email_notifications', false, 23);
+// Set 'example' setting to 'hello world'
+Setting::set('example', 'hello world', 23);
 
-//Save config
+// Save to database
 Setting::save(23);
 
-//Save email_notifications
-return Setting::get('email_notifications', true, 23);
+// Get the same setting
+return Setting::get('example', null, 23);
 ```
 
 
