@@ -35,7 +35,7 @@ return array(
   'column' => 'settings',
   'constraint_key' => 'id',
   'default_constraint_value' => (Auth::check() ? Auth::id() : null)
-  'custom_constraint' => false,
+  'custom_constraint' => null,
 );
 ```
 
