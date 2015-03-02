@@ -77,15 +77,14 @@ class Setting {
      */
     public function __construct()
     {
-        $this->table = \Config::get('grimthorr/laravel-user-settings::table');
-        $this->column = \Config::get('grimthorr/laravel-user-settings::column');
-        $this->custom_constraint = \Config::get('grimthorr/laravel-user-settings::custom_constraint');
-		$this->constraint_key = \Config::get('grimthorr/laravel-user-settings::constraint_key');
-		$this->default_constraint_value = \Config::get('grimthorr/laravel-user-settings::default_constraint_value');
+        $this->table = config('laravel-user-settings.table');
+        $this->column = config('laravel-user-settings.column');
+        $this->custom_constraint = config('laravel-user-settings.custom_constraint');
+		$this->constraint_key = config('laravel-user-settings.constraint_key');
+		$this->default_constraint_value = config('laravel-user-settings.default_constraint_value');
 
-        // Backwards compatibility for versions < 1.1.0.
-        if(\Config::has('grimthorr/laravel-user-settings::constraint')) {
-            $this->custom_constraint = \Config::get('grimthorr/laravel-user-settings::constraint');
+        if(is_null($this->default_constraint_value)) {
+            $this->default_constraint_value = (\Auth::check() ? \Auth::id() : null);
         }
     }
 

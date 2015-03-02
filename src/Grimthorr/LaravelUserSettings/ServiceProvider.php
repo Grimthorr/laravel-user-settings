@@ -19,7 +19,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('grimthorr/laravel-user-settings');
+		$this->publishes([
+			__DIR__.'/../../config/config.php' => config_path('laravel-user-settings.php'),
+		], 'config');
+
+		$this->publishes([
+			__DIR__.'/../../migrations/' => base_path('/database/migrations')
+		], 'migrations');
 	}
 
 	/**
@@ -29,7 +35,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app['config']->package('grimthorr/laravel-user-settings', __DIR__.'/../../config', 'grimthorr/laravel-user-settings');
+		$this->mergeConfigFrom(
+			__DIR__.'/../../config/config.php', 'laravel-user-settings'
+		);
 	}
 
 	/**
