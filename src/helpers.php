@@ -18,6 +18,6 @@ if (!function_exists('setting'))
             return $instance->get($key, $default, $constraint_value);
         }
 
-        return app('Setting')->getFacadeRoot();
+        return $instance;
     }
 }
