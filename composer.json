@@ -1,6 +1,6 @@
 {
     "name": "grimthorr/laravel-user-settings",
-    "description": "Simple user settings facade for Laravel 4.",
+    "description": "Simple user settings facade for Laravel 5.",
     "homepage": "https://github.com/Grimthorr/laravel-user-settings",
     "license": "MIT",
     "authors": [
