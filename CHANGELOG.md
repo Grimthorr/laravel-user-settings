@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.0] - 2015-03-02 11:35 GMT
+##### Added
+- Support for Laravel 5 (use [version 1.x](https://github.com/Grimthorr/laravel-user-settings/tree/laravel4) for Laravel 4).
+- Helper function (`setting()`) for easy access to the Setting facade within a namespace.
+
+##### Changed
+- Master branch no longer supports Laravel 4.
+- Config file provider adjusted for Laravel 5 support.
+
 ## [1.1.0] - 2015-02-23 13:49 GMT
 ##### Added
 - Ability to specify a constraint on a per-call basis (see [#2]).
@@ -25,6 +34,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [#1]: https://github.com/Grimthorr/laravel-user-settings/issues/1
 [#2]: https://github.com/Grimthorr/laravel-user-settings/pull/2
 
+[2.0.0]: https://github.com/Grimthorr/laravel-user-settings/compare/1.1.0...2.0.0
 [1.1.0]: https://github.com/Grimthorr/laravel-user-settings/compare/1.0.2...1.1.0
 [1.0.2]: https://github.com/Grimthorr/laravel-user-settings/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/Grimthorr/laravel-user-settings/compare/1.0.0...1.0.1
