@@ -20,11 +20,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	public function boot()
 	{
 		$this->publishes([
-			__DIR__.'/../../config/config.php' => config_path('laravel-user-settings.php'),
+			__DIR__.'/../config/config.php' => config_path('laravel-user-settings.php'),
 		], 'config');
 
 		$this->publishes([
-			__DIR__.'/../../migrations/' => base_path('/database/migrations')
+			__DIR__.'/../migrations/' => base_path('/database/migrations')
 		], 'migrations');
 	}
 
@@ -36,7 +36,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	public function register()
 	{
 		$this->mergeConfigFrom(
-			__DIR__.'/../../config/config.php', 'laravel-user-settings'
+			__DIR__.'/../config/config.php', 'laravel-user-settings'
 		);
 	}
 
