@@ -12,12 +12,16 @@ if (!function_exists('setting'))
      */
     function setting($key = null, $default = null, $constraint_value = null)
     {
-        $instance = app('Setting')->getFacadeRoot();
+        $instance = app('setting');
+
+        if (!isset($instance)) {
+            $instance = app()->make('Grimthorr\LaravelUserSettings\Setting');
+        }
 
         if (isset($key)) {
             return $instance->get($key, $default, $constraint_value);
         }
 
-        return $instance;
+        return app('setting');
     }
 }
