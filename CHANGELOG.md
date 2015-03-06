@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [2.0.2] - 2015-03-06 10:27 GMT
+##### Changed
+- Make use of Laravel's service container to correctly bind the `Setting` class as a singleton.
+
 ## [2.0.1] - 2015-03-05 16:02 GMT
 ##### Fixed
 - Fix directory structure as per changes for Laravel 5 packages (fixes [#4]).
@@ -39,6 +44,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [#2]: https://github.com/Grimthorr/laravel-user-settings/pull/2
 [#4]: https://github.com/Grimthorr/laravel-user-settings/issues/4
 
+[2.0.2]: https://github.com/Grimthorr/laravel-user-settings/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/Grimthorr/laravel-user-settings/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/Grimthorr/laravel-user-settings/compare/1.1.0...2.0.0
 [1.1.0]: https://github.com/Grimthorr/laravel-user-settings/compare/1.0.2...1.1.0
