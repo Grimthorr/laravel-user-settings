@@ -143,7 +143,7 @@ class Setting {
         $this->check($constraint_value);
 
         if (array_key_exists($key, $this->settings[$constraint_value])) {
-            unset($this->settings[$constraint_value]);
+            unset($this->settings[$constraint_value][$key]);
 
             $this->dirty[$constraint_value] = true;
         }
