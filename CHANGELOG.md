@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [1.1.1] - 2015-03-24 08:44 GMT
+##### Fixed
+- Fix `forget` function not working (fixes [#5]).
+
 ## [1.1.0] - 2015-02-23 13:49 GMT
 ##### Added
 - Ability to specify a constraint on a per-call basis (see [#2]).
@@ -24,7 +29,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 [#1]: https://github.com/Grimthorr/laravel-user-settings/issues/1
 [#2]: https://github.com/Grimthorr/laravel-user-settings/pull/2
+[#5]: https://github.com/Grimthorr/laravel-user-settings/issues/5
 
+[1.1.1]: https://github.com/Grimthorr/laravel-user-settings/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/Grimthorr/laravel-user-settings/compare/1.0.2...1.1.0
 [1.0.2]: https://github.com/Grimthorr/laravel-user-settings/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/Grimthorr/laravel-user-settings/compare/1.0.0...1.0.1
