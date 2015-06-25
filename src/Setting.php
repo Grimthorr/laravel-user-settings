@@ -86,6 +86,10 @@ class Setting {
         if(is_null($this->default_constraint_value)) {
             $this->default_constraint_value = (\Auth::check() ? \Auth::id() : null);
         }
+        elseif($this->default_constraint_value == 'sentinel')
+        {
+            $this->default_constraint_value = (\Sentinel::check() ? \Sentinel::getUser()->getUserId() : null);
+        }
     }
 
 
@@ -252,7 +256,18 @@ class Setting {
      */
     protected function getConstraintValue($constraint_value)
     {
-        return $constraint_value ?: $this->default_constraint_value;
+        if(is_null($constraint_value))
+        {
+            if(is_null($this->default_constraint_value))
+            {
+                throw new InvalidConstraintException();
+            }
+            return $this->default_constraint_value;
+        }
+        else
+        {
+            return $constraint_value;
+        }
     }
 
     /**
