@@ -222,7 +222,7 @@ class Setting {
         $constraint_query = $this->getConstraintQuery($constraint_value);
         $json = \DB::table($this->table)
             ->whereRaw($constraint_query)
-            ->pluck($this->column);
+            ->value($this->column);
 
         $this->settings[$constraint_value] = json_decode($json, true);
 
