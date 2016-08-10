@@ -14,7 +14,7 @@ class AddSettingsToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			$table->json('settings');
+			$table->text('settings');
 		});
 	}
 
