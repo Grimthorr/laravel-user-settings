@@ -100,6 +100,11 @@ class Setting {
     public function get($key, $default = null, $constraint_value = null)
     {
         $constraint_value = $this->getConstraintValue($constraint_value);
+        
+        if (is_null($constraint_value)) {
+            return $default;
+        }
+        
         $this->check($constraint_value);
 
         return array_get($this->settings[$constraint_value], $key, $default);
