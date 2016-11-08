@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [2.1.2] - 2016-11-08 14:31 GMT
+##### Changed
+- Store settings as `text` rather than `json` in the default migration (merges [#17], [#18], [#19] and fixes [#16]).
+
 ## [2.1.1] - 2016-08-01 11:06 GMT
 ##### Changed
 - Store settings as `json` rather than `string` in the default migration (merges [#14]).
@@ -59,7 +63,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [#9]: https://github.com/Grimthorr/laravel-user-settings/issues/9
 [#10]: https://github.com/Grimthorr/laravel-user-settings/pull/10
 [#14]: https://github.com/Grimthorr/laravel-user-settings/pull/14
+[#16]: https://github.com/Grimthorr/laravel-user-settings/pull/14
+[#17]: https://github.com/Grimthorr/laravel-user-settings/pull/14
+[#18]: https://github.com/Grimthorr/laravel-user-settings/pull/14
+[#19]: https://github.com/Grimthorr/laravel-user-settings/pull/14
 
+[2.1.2]: https://github.com/Grimthorr/laravel-user-settings/compare/2.1.1...2.1.2
 [2.1.1]: https://github.com/Grimthorr/laravel-user-settings/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/Grimthorr/laravel-user-settings/compare/2.0.3...2.1.0
 [2.0.3]: https://github.com/Grimthorr/laravel-user-settings/compare/2.0.2...2.0.3
