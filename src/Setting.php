@@ -14,6 +14,14 @@ class Setting {
     protected $table = '';
 
     /**
+     * The database connection name.
+     * Configured by the developer (see config/config.php for default).
+     *
+     * @var string
+     */
+    protected $connection = '';
+
+    /**
      * The column name.
      * Configured by the developer (see config/config.php for default).
      *
@@ -77,6 +85,7 @@ class Setting {
      */
     public function __construct()
     {
+        $this->connection = config('laravel-user-settings.connection');
         $this->table = config('laravel-user-settings.table');
         $this->column = config('laravel-user-settings.column');
         $this->custom_constraint = config('laravel-user-settings.custom_constraint');
@@ -200,7 +209,7 @@ class Setting {
 
             $constraint_query = $this->getConstraintQuery($constraint_value);
 
-            $res = \DB::table($this->table)
+            $res = \DB::connection($this->connection)->table($this->table)
                 ->whereRaw($constraint_query)
                 ->update($update);
 
@@ -220,7 +229,7 @@ class Setting {
     {
         $constraint_value = $this->getConstraintValue($constraint_value);
         $constraint_query = $this->getConstraintQuery($constraint_value);
-        $json = \DB::table($this->table)
+        $json = \DB::connection($this->connection)->table($this->table)
             ->whereRaw($constraint_query)
             ->value($this->column);
 
