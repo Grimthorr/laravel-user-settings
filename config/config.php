@@ -2,6 +2,11 @@
 
 return array(
     /**
+     * The connection to the database that contains our table (if different then our default).
+     */
+    'connection' => env('DB_CONNECTION', 'mysql'),
+
+    /**
      * The table that contains the settings column.
      */
     'table' => 'users',
