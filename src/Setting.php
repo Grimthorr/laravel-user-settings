@@ -263,7 +263,8 @@ class Setting {
      */
     protected function getConstraintQuery($constraint_value)
     {
-        return $this->custom_constraint ?: $this->constraint_key . ' = ' . $constraint_value;
+        $theValue = is_numeric($constraint_value) ? $constraint_value : "'$constraint_value'";
+        return $this->custom_constraint ?: "$this->constraint_key = $theValue";
     }
 
 }
