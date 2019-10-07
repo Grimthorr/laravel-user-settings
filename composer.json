@@ -11,10 +11,11 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "5.*",
-        "illuminate/config": "5.*",
-        "illuminate/database": "5.*"
+        "php": "^7.2",
+        "illuminate/support": "^6.0",
+        "illuminate/config": "^6.0",
+        "illuminate/database": "^6.0",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {
