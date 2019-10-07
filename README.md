@@ -1,5 +1,5 @@
 # laravel-user-settings
-Simple user settings facade for Laravel 5. Settings are stored as JSON in a single database column, so you can easily add it to an existing table (`users` for example).
+Simple user settings facade for Laravel 6. Settings are stored as JSON in a single database column, so you can easily add it to an existing table (`users` for example).
 
 **Still using Laravel 4?** Make sure to use [version 1.x](https://github.com/Grimthorr/laravel-user-settings/tree/laravel4) instead (`composer require grimthorr/laravel-user-settings ~1.0`).
 
