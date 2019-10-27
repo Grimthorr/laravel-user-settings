@@ -3,6 +3,9 @@
 namespace Grimthorr\LaravelUserSettings;
 
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
+
 class Setting {
 
     /**
@@ -102,7 +105,7 @@ class Setting {
         $constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
-        return array_get($this->settings[$constraint_value], $key, $default);
+        return Arr::get($this->settings[$constraint_value], $key, $default);
     }
 
     /**
@@ -122,10 +125,10 @@ class Setting {
 
         if (is_array($key)) {
             foreach ($key as $k => $v) {
-                array_set($this->settings[$constraint_value], $k, $v);
+                Arr::set($this->settings[$constraint_value], $k, $v);
             }
         } else {
-            array_set($this->settings[$constraint_value], $key, $value);
+            Arr::set($this->settings[$constraint_value], $key, $value);
         }
     }
 
@@ -200,7 +203,7 @@ class Setting {
 
             $constraint_query = $this->getConstraintQuery($constraint_value);
 
-            $res = \DB::table($this->table)
+            $res = DB::table($this->table)
                 ->whereRaw($constraint_query)
                 ->update($update);
 
@@ -220,7 +223,7 @@ class Setting {
     {
         $constraint_value = $this->getConstraintValue($constraint_value);
         $constraint_query = $this->getConstraintQuery($constraint_value);
-        $json = \DB::table($this->table)
+        $json = DB::table($this->table)
             ->whereRaw($constraint_query)
             ->value($this->column);
 
