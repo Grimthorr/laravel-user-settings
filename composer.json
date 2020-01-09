@@ -1,20 +1,26 @@
 {
-    "name": "grimthorr/laravel-user-settings",
-    "description": "Simple user settings facade for Laravel 5.",
-    "homepage": "https://github.com/Grimthorr/laravel-user-settings",
+    "name": "maab16/laravel-user-settings",
+    "description": "Simple user settings facade for Laravel 6.",
+    "homepage": "https://github.com/maab16/laravel-user-settings",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Md Abu Ahsan Basir",
+            "email": "maab.career@gmail.com",
+            "homepage": "https://github.com/maab16"
+        },
         {
             "name": "Grimthorr",
             "email": "phil@hughesbox.co.uk",
             "homepage": "http://hughesbox.co.uk"
         }
     ],
+    "minimum-stability": "stable",
     "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "5.*",
-        "illuminate/config": "5.*",
-        "illuminate/database": "5.*"
+        "php": "^7.2",
+        "illuminate/support": "^6.0",
+        "illuminate/config": "^6.0",
+        "illuminate/database": "^6.0"
     },
     "autoload": {
         "psr-4": {
@@ -24,5 +30,14 @@
             "src/helpers.php"
         ]
     },
-    "minimum-stability": "stable"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Grimthorr\\LaravelUserSettings\\ServiceProvider"
+            ],
+            "aliases": {
+                "Setting": "Grimthorr\\LaravelUserSettings\\Facade"
+            }
+        }
+    }
 }
