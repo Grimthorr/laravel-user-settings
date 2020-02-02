@@ -1,11 +1,9 @@
 # laravel-user-settings
-Simple user settings facade for Laravel 6. Settings are stored as JSON in a single database column, so you can easily add it to an existing table (`users` for example).
-
-**Still using Laravel 4?** Make sure to use [version 1.x](https://github.com/Grimthorr/laravel-user-settings/tree/laravel4) instead (`composer require grimthorr/laravel-user-settings ~1.0`).
+Simple user settings facade for Laravel. Settings are stored as JSON in a single database column, so you can easily add it to an existing table (`users` for example).
 
 
 ## Installation
-1. Run `composer require grimthorr/laravel-user-settings` to include this in your project.
+1. Run `composer require ricardoboss/laravel-user-settings` to include this in your project.
 2. Add `'Grimthorr\LaravelUserSettings\ServiceProvider'` to `providers` in `config/app.php`.
 
   ```php
@@ -151,4 +149,5 @@ Feel free to create a fork and submit a pull request if you would like to contri
 Raise an issue on GitHub if you notice something broken.
 
 #### Credits
+Forked from Grimthorr on https://github.com/Grimthorr/laravel-user-settings
 Based loosely on https://github.com/anlutro/laravel-settings.
