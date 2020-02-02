@@ -54,7 +54,7 @@ class Setting {
      *
      * @var array
      */
-    protected $settings = array();
+    protected $settings = [];
 
     /**
      * Whether any settings have been modified since being loaded.
@@ -62,7 +62,7 @@ class Setting {
      *
      * @var bool
      */
-    protected $dirty = array();
+    protected $dirty = [];
 
     /**
      * Whether settings have been loaded from the database (this session).
@@ -70,7 +70,7 @@ class Setting {
      *
      * @var array
      */
-    protected $loaded = array();
+    protected $loaded = [];
 
 
     /**
@@ -163,11 +163,8 @@ class Setting {
         $constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
-        if (!array_key_exists($constraint_value, $this->settings)) {
-            return false;
-        }
-
-        return array_key_exists($key, $this->settings[$constraint_value]);
+        // check if setting exists using dot-notation
+        return Arr::has($this->settings, "$constraint_value.$key");
     }
 
     /**
