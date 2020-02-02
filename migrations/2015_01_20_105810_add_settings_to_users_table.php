@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class AddSettingsToUsersTable extends Migration {
@@ -15,7 +16,16 @@ class AddSettingsToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			$table->text('settings');
+			/** @noinspection PhpComposerExtensionStubsInspection */
+			if (
+				class_exists(PDO::class) &&
+				DB::connection()->getPdo()->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql' &&
+				version_compare(DB::connection()->getPdo()->getAttribute(PDO::ATTR_SERVER_VERSION), '5.7.8', 'ge')
+			) {
+				$table->json('settings')->default('[]');
+			} else {
+				$table->text('settings');
+			}
 		});
 	}
 
