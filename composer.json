@@ -30,5 +30,15 @@
             "src/helpers.php"
         ]
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Grimthorr\\LaravelUserSettings\\ServiceProvider"
+            ],
+            "aliases": {
+                "Setting": "Grimthorr\\LaravelUserSettings\\Facade"
+            }
+        }
+    }
 }
