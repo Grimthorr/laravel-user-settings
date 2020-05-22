@@ -6,7 +6,7 @@ Simple user settings facade for Laravel. Settings are stored as JSON in a single
 1. Run `composer require ricardoboss/laravel-user-settings` to include this in your project.
 2. Run `php artisan vendor:publish --provider="Grimthorr\LaravelUserSettings\ServiceProvider" --tag="config"` to publish the config file.
 3. Modify the published configuration file located at `config/laravel-user-settings.php` to your liking.
-4. Create a column in a table on your database to match the config file in step 5. Alternatively, use the Laravel migration included in this package to automatically create a `settings` column in the `users` table: `php artisan vendor:publish --provider="Grimthorr\LaravelUserSettings\ServiceProvider" --tag="migrations" && php artisan migrate`.
+4. Create a column in a table on your database to match the config in your settings file. Alternatively, use the Laravel migration included in this package to automatically create a `settings` column in the `users` table: `php artisan vendor:publish --provider="Grimthorr\LaravelUserSettings\ServiceProvider" --tag="migrations" && php artisan migrate`.
    > Attention: the datatype of your column should be large enough to store all your settings in JSON format. For MySQL, `TEXT` should be large enough.
 
 
