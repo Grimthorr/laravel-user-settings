@@ -1,7 +1,7 @@
 <?php
+declare(strict_types=1);
 
 namespace Grimthorr\LaravelUserSettings;
-
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 
@@ -49,7 +49,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
      */
     public function provides()
     {
-        return array();
+        return [];
     }
-
 }

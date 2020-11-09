@@ -1,7 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace Grimthorr\LaravelUserSettings;
 
+
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 
 class Setting {
 
@@ -51,7 +55,7 @@ class Setting {
      *
      * @var array
      */
-    protected $settings = array();
+    protected $settings = [];
 
     /**
      * Whether any settings have been modified since being loaded.
@@ -59,7 +63,7 @@ class Setting {
      *
      * @var bool
      */
-    protected $dirty = array();
+    protected $dirty = [];
 
     /**
      * Whether settings have been loaded from the database (this session).
@@ -67,7 +71,7 @@ class Setting {
      *
      * @var array
      */
-    protected $loaded = array();
+    protected $loaded = [];
 
 
     /**
@@ -102,7 +106,7 @@ class Setting {
         $constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
-        return array_get($this->settings[$constraint_value], $key, $default);
+        return Arr::get($this->settings[$constraint_value], $key, $default);
     }
 
     /**
@@ -122,10 +126,10 @@ class Setting {
 
         if (is_array($key)) {
             foreach ($key as $k => $v) {
-                array_set($this->settings[$constraint_value], $k, $v);
+                Arr::set($this->settings[$constraint_value], $k, $v);
             }
         } else {
-            array_set($this->settings[$constraint_value], $key, $value);
+            Arr::set($this->settings[$constraint_value], $key, $value);
         }
     }
 
@@ -160,11 +164,8 @@ class Setting {
         $constraint_value = $this->getConstraintValue($constraint_value);
         $this->check($constraint_value);
 
-        if (!array_key_exists($constraint_value, $this->settings)) {
-            return false;
-        }
-
-        return array_key_exists($key, $this->settings[$constraint_value]);
+        // check if setting exists using dot-notation
+        return Arr::has($this->settings, "$constraint_value.$key");
     }
 
     /**
@@ -200,7 +201,7 @@ class Setting {
 
             $constraint_query = $this->getConstraintQuery($constraint_value);
 
-            $res = \DB::table($this->table)
+            $res = DB::table($this->table)
                 ->whereRaw($constraint_query)
                 ->update($update);
 
@@ -220,7 +221,7 @@ class Setting {
     {
         $constraint_value = $this->getConstraintValue($constraint_value);
         $constraint_query = $this->getConstraintQuery($constraint_value);
-        $json = \DB::table($this->table)
+        $json = DB::table($this->table)
             ->whereRaw($constraint_query)
             ->value($this->column);
 
