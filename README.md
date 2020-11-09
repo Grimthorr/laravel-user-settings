@@ -132,5 +132,5 @@ Feel free to create a fork and submit a pull request if you would like to contri
 Raise an issue on GitHub if you notice something broken.
 
 #### Credits
-Forked from Grimthorr on https://github.com/Grimthorr/laravel-user-settings
+Forked from Grimthorr on https://github.com/Grimthorr/laravel-user-settings  
 Based loosely on https://github.com/anlutro/laravel-settings.
