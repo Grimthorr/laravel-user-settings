@@ -3,6 +3,10 @@ Simple user settings facade for Laravel 5. Settings are stored as JSON in a sing
 
 **Still using Laravel 4?** Make sure to use [version 1.x](https://github.com/Grimthorr/laravel-user-settings/tree/laravel4) instead (`composer require grimthorr/laravel-user-settings ~1.0`).
 
+> **Warning**
+> 
+> **This repository has been archived.** It is no longer maintained and can be considered abandoned. While it may work with later versions of Laravel, you should exercise caution while using it to avoid introducing any unexpected security risks.
+
 
 ## Installation
 1. Run `composer require grimthorr/laravel-user-settings` to include this in your project.
